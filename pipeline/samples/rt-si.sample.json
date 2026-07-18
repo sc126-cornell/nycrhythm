@@ -1,0 +1,219 @@
+{
+  "fetchedAt": "2026-07-18T21:36:21.890Z",
+  "headerTimestamp": 1784410579,
+  "freshnessSec": -5,
+  "counts": {
+    "entities": 16,
+    "tripUpdates": 8,
+    "vehicles": 8,
+    "alerts": 0
+  },
+  "routeIds": [
+    "SI"
+  ],
+  "sampleTripUpdates": [
+    {
+      "trip": {
+        "tripId": "102100_SI..N",
+        "startTime": "17:02:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410562
+          },
+          "departure": {
+            "time": 1784410562
+          },
+          "stopId": "S27N"
+        },
+        {
+          "arrival": {
+            "time": 1784410701
+          },
+          "departure": {
+            "time": 1784410701
+          },
+          "stopId": "S28N"
+        },
+        {
+          "arrival": {
+            "time": 1784410821
+          },
+          "departure": {
+            "time": 1784410821
+          },
+          "stopId": "S29N"
+        },
+        {
+          "arrival": {
+            "time": 1784410941
+          },
+          "departure": {
+            "time": 1784410941
+          },
+          "stopId": "S30N"
+        },
+        {
+          "arrival": {
+            "time": 1784413096
+          },
+          "departure": {
+            "time": 1784413096
+          },
+          "stopId": "S31N"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "102600_SI..S",
+        "startTime": "17:06:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410562
+          },
+          "departure": {
+            "time": 1784410562
+          },
+          "stopId": "S16S"
+        },
+        {
+          "arrival": {
+            "time": 1784410662
+          },
+          "departure": {
+            "time": 1784410662
+          },
+          "stopId": "S15S"
+        },
+        {
+          "arrival": {
+            "time": 1784410782
+          },
+          "departure": {
+            "time": 1784410782
+          },
+          "stopId": "S14S"
+        },
+        {
+          "arrival": {
+            "time": 1784410902
+          },
+          "departure": {
+            "time": 1784410902
+          },
+          "stopId": "S13S"
+        },
+        {
+          "arrival": {
+            "time": 1784411022
+          },
+          "departure": {
+            "time": 1784411022
+          },
+          "stopId": "S11S"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "105100_SI..N",
+        "startTime": "17:31:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410550
+          },
+          "departure": {
+            "time": 1784410550
+          },
+          "stopId": "S13N"
+        },
+        {
+          "arrival": {
+            "time": 1784410636
+          },
+          "departure": {
+            "time": 1784410636
+          },
+          "stopId": "S14N"
+        },
+        {
+          "arrival": {
+            "time": 1784410756
+          },
+          "departure": {
+            "time": 1784410756
+          },
+          "stopId": "S15N"
+        },
+        {
+          "arrival": {
+            "time": 1784410876
+          },
+          "departure": {
+            "time": 1784410876
+          },
+          "stopId": "S16N"
+        },
+        {
+          "arrival": {
+            "time": 1784410996
+          },
+          "departure": {
+            "time": 1784410996
+          },
+          "stopId": "S17N"
+        }
+      ]
+    }
+  ],
+  "sampleVehicles": [
+    {
+      "trip": {
+        "tripId": "102100_SI..N",
+        "startTime": "17:02:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "currentStopSequence": 16,
+      "currentStatus": 1,
+      "timestamp": 1784410562,
+      "stopId": "S27N"
+    },
+    {
+      "trip": {
+        "tripId": "102600_SI..S",
+        "startTime": "17:06:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "currentStopSequence": 15,
+      "currentStatus": 1,
+      "timestamp": 1784410562,
+      "stopId": "S16S"
+    },
+    {
+      "trip": {
+        "tripId": "105100_SI..N",
+        "startTime": "17:31:00",
+        "startDate": "20260718",
+        "routeId": "SI"
+      },
+      "currentStopSequence": 2,
+      "currentStatus": 1,
+      "timestamp": 1784410550,
+      "stopId": "S13N"
+    }
+  ]
+}

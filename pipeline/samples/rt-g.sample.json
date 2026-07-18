@@ -1,0 +1,210 @@
+{
+  "fetchedAt": "2026-07-18T21:36:17.635Z",
+  "headerTimestamp": 1784410574,
+  "freshnessSec": 0,
+  "counts": {
+    "entities": 48,
+    "tripUpdates": 24,
+    "vehicles": 24,
+    "alerts": 0
+  },
+  "routeIds": [
+    "G"
+  ],
+  "sampleTripUpdates": [
+    {
+      "trip": {
+        "tripId": "102450_G..S16R",
+        "startTime": "17:08:00",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410557
+          },
+          "departure": {
+            "time": 1784410557
+          },
+          "stopId": "F23S"
+        },
+        {
+          "arrival": {
+            "time": 1784410632
+          },
+          "departure": {
+            "time": 1784410632
+          },
+          "stopId": "F24S"
+        },
+        {
+          "arrival": {
+            "time": 1784410722
+          },
+          "departure": {
+            "time": 1784410722
+          },
+          "stopId": "F25S"
+        },
+        {
+          "arrival": {
+            "time": 1784410872
+          },
+          "departure": {
+            "time": 1784410872
+          },
+          "stopId": "F26S"
+        },
+        {
+          "arrival": {
+            "time": 1784410962
+          },
+          "departure": {
+            "time": 1784410962
+          },
+          "stopId": "F27S"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "102500_G..N16R",
+        "startTime": "17:05:33",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410640
+          },
+          "departure": {
+            "time": 1784410640
+          },
+          "stopId": "G28N"
+        },
+        {
+          "arrival": {
+            "time": 1784410730
+          },
+          "departure": {
+            "time": 1784410730
+          },
+          "stopId": "G26N"
+        },
+        {
+          "arrival": {
+            "time": 1784410910
+          },
+          "departure": {
+            "time": 1784410910
+          },
+          "stopId": "G24N"
+        },
+        {
+          "arrival": {
+            "time": 1784410970
+          },
+          "departure": {
+            "time": 1784410970
+          },
+          "stopId": "G22N"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "103250_G..S16R",
+        "startTime": "17:12:30",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410624
+          },
+          "departure": {
+            "time": 1784410624
+          },
+          "stopId": "F22S"
+        },
+        {
+          "arrival": {
+            "time": 1784410714
+          },
+          "departure": {
+            "time": 1784410714
+          },
+          "stopId": "F23S"
+        },
+        {
+          "arrival": {
+            "time": 1784410804
+          },
+          "departure": {
+            "time": 1784410804
+          },
+          "stopId": "F24S"
+        },
+        {
+          "arrival": {
+            "time": 1784410894
+          },
+          "departure": {
+            "time": 1784410894
+          },
+          "stopId": "F25S"
+        },
+        {
+          "arrival": {
+            "time": 1784411044
+          },
+          "departure": {
+            "time": 1784411044
+          },
+          "stopId": "F26S"
+        }
+      ]
+    }
+  ],
+  "sampleVehicles": [
+    {
+      "trip": {
+        "tripId": "102450_G..S16R",
+        "startTime": "17:08:00",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "currentStopSequence": 16,
+      "currentStatus": 1,
+      "timestamp": 1784410557,
+      "stopId": "F23S"
+    },
+    {
+      "trip": {
+        "tripId": "102500_G..N16R",
+        "startTime": "17:05:33",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "currentStopSequence": 16,
+      "currentStatus": 1,
+      "timestamp": 1784410495,
+      "stopId": "G29N"
+    },
+    {
+      "trip": {
+        "tripId": "103250_G..S16R",
+        "startTime": "17:12:30",
+        "startDate": "20260718",
+        "routeId": "G"
+      },
+      "currentStopSequence": 14,
+      "currentStatus": 1,
+      "timestamp": 1784410527,
+      "stopId": "F21S"
+    }
+  ]
+}

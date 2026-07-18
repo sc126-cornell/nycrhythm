@@ -1,0 +1,176 @@
+[
+  {
+    "id": "A",
+    "short": "A",
+    "long": "8 Avenue Express",
+    "color": " from about 6 AM until about midnight"
+  },
+  {
+    "id": "C",
+    "short": "C",
+    "long": "8 Avenue Local",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "E",
+    "short": "E",
+    "long": "8 Avenue Local",
+    "color": " Manhattan"
+  },
+  {
+    "id": "B",
+    "short": "B",
+    "long": "6 Avenue Express",
+    "color": " Manhattan"
+  },
+  {
+    "id": "D",
+    "short": "D",
+    "long": "6 Avenue Express",
+    "color": " Bronx"
+  },
+  {
+    "id": "F",
+    "short": "F",
+    "long": "Queens Blvd Express/6 Av Local",
+    "color": " Brooklyn. On weekdays"
+  },
+  {
+    "id": "FX",
+    "short": "FX",
+    "long": "Brooklyn F Express",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "M",
+    "short": "M",
+    "long": "Queens Blvd Local/6 Av Local",
+    "color": " M trains operate from Middle Village to Delancey St-Essex St"
+  },
+  {
+    "id": "G",
+    "short": "G",
+    "long": "Brooklyn-Queens Crosstown",
+    "color": "1"
+  },
+  {
+    "id": "J",
+    "short": "J",
+    "long": "Nassau St Local",
+    "color": " Manhattan at all times. During weekdays"
+  },
+  {
+    "id": "Z",
+    "short": "Z",
+    "long": "Nassau St Express",
+    "color": " and some stations are served by both J and Z trains. J/Z skip-stop service runs towards Manhattan from about 7 AM to 8:15 AM and from Manhattan from about 4:30 PM to 5:45 PM.\""
+  },
+  {
+    "id": "L",
+    "short": "L",
+    "long": "14 St-Canarsie Local",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "N",
+    "short": "N",
+    "long": "Broadway Local",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "Q",
+    "short": "Q",
+    "long": "Broadway Express",
+    "color": " Brooklyn at all times. Trains operate local in Brooklyn at all times. Train operate express in Manhattan at all times"
+  },
+  {
+    "id": "R",
+    "short": "R",
+    "long": "Broadway Local",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "W",
+    "short": "W",
+    "long": "Broadway Local",
+    "color": " Manhattan"
+  },
+  {
+    "id": "GS",
+    "short": "S",
+    "long": "42 St Shuttle",
+    "color": " and 7 service at Grand Central-42 St and A"
+  },
+  {
+    "id": "FS",
+    "short": "S",
+    "long": "Franklin Avenue Shuttle",
+    "color": "7C858C"
+  },
+  {
+    "id": "H",
+    "short": "S",
+    "long": "Rockaway Park Shuttle",
+    "color": "https://www.mta.info/schedules/subway/rockaway-park-shuttle"
+  },
+  {
+    "id": "1",
+    "short": "1",
+    "long": "Broadway - 7 Avenue Local",
+    "color": "1"
+  },
+  {
+    "id": "2",
+    "short": "2",
+    "long": "7 Avenue Express",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "3",
+    "short": "3",
+    "long": "7 Avenue Express",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "4",
+    "short": "4",
+    "long": "Lexington Avenue Express",
+    "color": " Brooklyn"
+  },
+  {
+    "id": "5",
+    "short": "5",
+    "long": "Lexington Avenue Express",
+    "color": " Brooklyn. At all other times except during late nights"
+  },
+  {
+    "id": "6",
+    "short": "6",
+    "long": "Lexington Avenue Local",
+    "color": " Manhattan"
+  },
+  {
+    "id": "6X",
+    "short": "6X",
+    "long": "Pelham Bay Park Express",
+    "color": " Manhattan"
+  },
+  {
+    "id": "7",
+    "short": "7",
+    "long": "Flushing Local",
+    "color": " Manhattan"
+  },
+  {
+    "id": "7X",
+    "short": "7X",
+    "long": "Flushing Express",
+    "color": " Manhattan"
+  },
+  {
+    "id": "SI",
+    "short": "SIR",
+    "long": "Staten Island Railway",
+    "color": "https://www.mta.info/schedules/subway/staten-island-railway"
+  }
+]

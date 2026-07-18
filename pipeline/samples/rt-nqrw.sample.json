@@ -1,0 +1,175 @@
+{
+  "fetchedAt": "2026-07-18T21:36:19.924Z",
+  "headerTimestamp": 1784410564,
+  "freshnessSec": 10,
+  "counts": {
+    "entities": 154,
+    "tripUpdates": 77,
+    "vehicles": 77,
+    "alerts": 0
+  },
+  "routeIds": [
+    "N",
+    "Q",
+    "R"
+  ],
+  "sampleTripUpdates": [
+    {
+      "trip": {
+        "tripId": "098300_N..N34R",
+        "startTime": "16:23:00",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410550
+          },
+          "departure": {
+            "time": 1784410550
+          },
+          "stopId": "R11N"
+        },
+        {
+          "arrival": {
+            "time": 1784410700
+          },
+          "departure": {
+            "time": 1784410700
+          },
+          "stopId": "R60N"
+        },
+        {
+          "arrival": {
+            "time": 1784410742
+          },
+          "departure": {
+            "time": 1784410742
+          },
+          "stopId": "R09N"
+        },
+        {
+          "arrival": {
+            "time": 1784410877
+          },
+          "departure": {
+            "time": 1784410877
+          },
+          "stopId": "R08N"
+        },
+        {
+          "arrival": {
+            "time": 1784410937
+          },
+          "departure": {
+            "time": 1784410937
+          },
+          "stopId": "R06N"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "097100_N..N34R",
+        "startTime": "16:13:00",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "stopTimeUpdate": []
+    },
+    {
+      "trip": {
+        "tripId": "099000_N..S36R",
+        "startTime": "16:30:14",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410555
+          },
+          "departure": {
+            "time": 1784410555
+          },
+          "stopId": "N07S"
+        },
+        {
+          "arrival": {
+            "time": 1784410624
+          },
+          "departure": {
+            "time": 1784410624
+          },
+          "stopId": "N08S"
+        },
+        {
+          "arrival": {
+            "time": 1784410744
+          },
+          "departure": {
+            "time": 1784410744
+          },
+          "stopId": "N09S"
+        },
+        {
+          "arrival": {
+            "time": 1784410864
+          },
+          "departure": {
+            "time": 1784410864
+          },
+          "stopId": "N10S"
+        },
+        {
+          "arrival": {
+            "time": 1784411164
+          },
+          "departure": {
+            "time": 1784411164
+          },
+          "stopId": "D43S"
+        }
+      ]
+    }
+  ],
+  "sampleVehicles": [
+    {
+      "trip": {
+        "tripId": "098300_N..N34R",
+        "startTime": "16:23:00",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "currentStopSequence": 24,
+      "currentStatus": 1,
+      "timestamp": 1784410550,
+      "stopId": "R11N"
+    },
+    {
+      "trip": {
+        "tripId": "097100_N..N34R",
+        "startTime": "16:13:00",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "currentStopSequence": 39,
+      "currentStatus": 1,
+      "timestamp": 1784410257,
+      "stopId": "R01N"
+    },
+    {
+      "trip": {
+        "tripId": "099000_N..S36R",
+        "startTime": "16:30:14",
+        "startDate": "20260718",
+        "routeId": "N"
+      },
+      "currentStopSequence": 28,
+      "currentStatus": 1,
+      "timestamp": 1784410555,
+      "stopId": "N07S"
+    }
+  ]
+}

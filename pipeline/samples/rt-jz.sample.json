@@ -1,0 +1,119 @@
+{
+  "fetchedAt": "2026-07-18T21:36:18.705Z",
+  "headerTimestamp": 1784410565,
+  "freshnessSec": 9,
+  "counts": {
+    "entities": 68,
+    "tripUpdates": 34,
+    "vehicles": 34,
+    "alerts": 0
+  },
+  "routeIds": [
+    "J"
+  ],
+  "sampleTripUpdates": [
+    {
+      "trip": {
+        "tripId": "103000_J..S60X005",
+        "startTime": "17:10:03",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410545
+          },
+          "departure": {
+            "time": 1784410545
+          },
+          "stopId": "J24S"
+        },
+        {
+          "arrival": {
+            "time": 1784410552
+          },
+          "departure": {
+            "time": 1784410552
+          },
+          "stopId": "J27S"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "103650_J..N60X005",
+        "startTime": "17:15:22",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "stopTimeUpdate": [
+        {
+          "arrival": {
+            "time": 1784410667
+          },
+          "departure": {
+            "time": 1784410667
+          },
+          "stopId": "G06N"
+        },
+        {
+          "arrival": {
+            "time": 1784410727
+          },
+          "departure": {
+            "time": 1784410727
+          },
+          "stopId": "G05N"
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "103700_J..S12X021",
+        "startTime": "17:17:00",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "stopTimeUpdate": []
+    }
+  ],
+  "sampleVehicles": [
+    {
+      "trip": {
+        "tripId": "103000_J..S60X005",
+        "startTime": "17:10:03",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "currentStopSequence": 14,
+      "currentStatus": 1,
+      "timestamp": 1784410552,
+      "stopId": "J27S"
+    },
+    {
+      "trip": {
+        "tripId": "103650_J..N60X005",
+        "startTime": "17:15:22",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "currentStopSequence": 12,
+      "currentStatus": 1,
+      "timestamp": 1784410527,
+      "stopId": "J12N"
+    },
+    {
+      "trip": {
+        "tripId": "103700_J..S12X021",
+        "startTime": "17:17:00",
+        "startDate": "20260718",
+        "routeId": "J"
+      },
+      "currentStopSequence": 6,
+      "currentStatus": 1,
+      "timestamp": 1784410238,
+      "stopId": "M23S"
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 | 項目 | 內容 |
 |---|---|
-| 狀態 | 🟡 規劃中（待用戶確認開工） |
+| 狀態 | 🔵 進行中（2026-07-19 用戶 Gate「開工」） |
 | 預估 | 1 人日 |
-| 開始 / 完成日期 | — / — |
+| 開始 / 完成日期 | 2026-07-19 / — |
 
 ## 1. 目標（Plan）
 
@@ -17,11 +17,11 @@
 
 ## 2. 工作項目（Do）
 
-- [ ] T0.1 骨架移植：從捷奏複製 monorepo 結構與工具鏈（Vite/TS/ESLint/tsx/CI 模板），去台北專屬碼；MIT、.gitignore；Dropbox node_modules 忽略（捷奏教訓）
-- [ ] T0.2 GTFS-RT Spike：`gtfs-realtime-bindings` 解碼 8 餵送 → 統計 entity 數、TripUpdate/VehiclePosition 覆蓋率、stopTimeUpdate 欄位樣態、時間戳新鮮度；樣本入 `pipeline/samples/`
-- [ ] T0.3 GTFS 靜態 Spike：下載 zip → 盤點 25+ routes 色票、shapes 變體數、stops 與站群對應、stop_times 行數與壓縮估算
-- [ ] T0.4 Vercel 專案建立＋`/api/health`；`/api/rt` 原型（單餵送解碼→瘦身→s-maxage=15）驗證邊緣快取 HIT
-- [ ] T0.5 schema 凍結：network.json v2（service→pattern→shape）＋ rt JSON（`[{trip, route, dir, stops:[{s, eta}]}]`）寫入 SDD-lite
+- [x] T0.1 骨架移植（2026-07-19：monorepo＋工具鏈就位、英文起始頁、Dropbox 忽略已套）
+- [x] T0.2 GTFS-RT Spike（2026-07-19：**8/8 解碼成功、529 trips／408 vehicles 實時在線**、新鮮度 0–10s、94%+ 含未來停靠；週末改道實錄（E 現身 bdfm）證明 RT-first 天然吸收改道）
+- [x] T0.3 GTFS 靜態 Spike（2026-07-19：29 routes／496 母站＋992 月台（N/S 尾碼＝方向）／shapes 257 變體／trips 20,309／stop_times 34.7MB 563K 行／transfers 613）
+- [ ] T0.4 `/api/health`＋`/api/rt` 原型**程式已就緒**；👤 待用戶 Vercel import repo（同捷奏四欄位流程）後驗證邊緣快取 HIT
+- [x] T0.5 schema 凍結（SPIKE-NOTES §5＋SDD 精簡版；色票以官方幹線色常數為準——簡化 CSV 解析的引號逗號問題已記錄，正式管線需完整 parser）
 
 ## 3. Verify — 技術驗證
 

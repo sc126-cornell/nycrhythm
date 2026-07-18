@@ -1,0 +1,268 @@
+{
+  "fetchedAt": "2026-07-18T21:36:21.016Z",
+  "headerTimestamp": 1784410572,
+  "freshnessSec": 2,
+  "counts": {
+    "entities": 50,
+    "tripUpdates": 32,
+    "vehicles": 18,
+    "alerts": 0
+  },
+  "routeIds": [
+    "L"
+  ],
+  "sampleTripUpdates": [
+    {
+      "trip": {
+        "tripId": "101400_L..S",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "stopTimeUpdate": [
+        {
+          "stopSequence": 22,
+          "arrival": {
+            "delay": 484,
+            "time": 1784410729,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 484,
+            "time": 1784410744,
+            "uncertainty": 0
+          },
+          "stopId": "L28S",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 23,
+          "arrival": {
+            "delay": 484,
+            "time": 1784410789,
+            "uncertainty": 0
+          },
+          "stopId": "L29S",
+          "scheduleRelationship": 0
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "102250_L..N",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "stopTimeUpdate": [
+        {
+          "stopSequence": 17,
+          "arrival": {
+            "delay": 242,
+            "time": 1784410397,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 242,
+            "time": 1784410412,
+            "uncertainty": 0
+          },
+          "stopId": "L10N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 18,
+          "arrival": {
+            "delay": 333,
+            "time": 1784410578,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 333,
+            "time": 1784410593,
+            "uncertainty": 0
+          },
+          "stopId": "L08N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 19,
+          "arrival": {
+            "delay": 333,
+            "time": 1784410818,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 333,
+            "time": 1784410833,
+            "uncertainty": 0
+          },
+          "stopId": "L06N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 20,
+          "arrival": {
+            "delay": 333,
+            "time": 1784410878,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 333,
+            "time": 1784410893,
+            "uncertainty": 0
+          },
+          "stopId": "L05N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 21,
+          "arrival": {
+            "delay": 333,
+            "time": 1784410968,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 333,
+            "time": 1784410983,
+            "uncertainty": 0
+          },
+          "stopId": "L03N",
+          "scheduleRelationship": 0
+        }
+      ]
+    },
+    {
+      "trip": {
+        "tripId": "102650_L..N",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "stopTimeUpdate": [
+        {
+          "stopSequence": 16,
+          "arrival": {
+            "delay": 166,
+            "time": 1784410501,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 166,
+            "time": 1784410516,
+            "uncertainty": 0
+          },
+          "stopId": "L11N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 17,
+          "arrival": {
+            "delay": 183,
+            "time": 1784410578,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 183,
+            "time": 1784410593,
+            "uncertainty": 0
+          },
+          "stopId": "L10N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 18,
+          "arrival": {
+            "delay": 183,
+            "time": 1784410668,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 183,
+            "time": 1784410683,
+            "uncertainty": 0
+          },
+          "stopId": "L08N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 19,
+          "arrival": {
+            "delay": 183,
+            "time": 1784410908,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 183,
+            "time": 1784410923,
+            "uncertainty": 0
+          },
+          "stopId": "L06N",
+          "scheduleRelationship": 0
+        },
+        {
+          "stopSequence": 20,
+          "arrival": {
+            "delay": 183,
+            "time": 1784410968,
+            "uncertainty": 0
+          },
+          "departure": {
+            "delay": 183,
+            "time": 1784410983,
+            "uncertainty": 0
+          },
+          "stopId": "L05N",
+          "scheduleRelationship": 0
+        }
+      ]
+    }
+  ],
+  "sampleVehicles": [
+    {
+      "trip": {
+        "tripId": "101400_L..S",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "currentStopSequence": 22,
+      "currentStatus": 2,
+      "timestamp": 1784410564,
+      "congestionLevel": 0,
+      "stopId": "L28S"
+    },
+    {
+      "trip": {
+        "tripId": "102250_L..N",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "currentStopSequence": 17,
+      "currentStatus": 1,
+      "timestamp": 1784410563,
+      "congestionLevel": 0,
+      "stopId": "L10N"
+    },
+    {
+      "trip": {
+        "tripId": "102650_L..N",
+        "startDate": "20260718",
+        "scheduleRelationship": 0,
+        "routeId": "L",
+        "directionId": 0
+      },
+      "currentStopSequence": 16,
+      "currentStatus": 1,
+      "timestamp": 1784410563,
+      "congestionLevel": 0,
+      "stopId": "L11N"
+    }
+  ]
+}
