@@ -7,7 +7,9 @@
     <meta property="og:title" content="nycrhythm — NYC Subway Live Map" />
     <meta property="og:description" content="Open a tab, watch New York breathe. Every train, live." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nycrhythm.scottchen0622.com/" />
     <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>nycrhythm — NYC Subway Live Map</title>
   </head>
   <body>
@@ -17,7 +19,18 @@
       <span class="logo">nycrhythm</span>
       <span id="liveCount" class="badge">loading…</span>
       <span id="nyClock" class="badge clock" title="New York time">--:--:--</span>
+      <button id="aboutBtn" class="iconbtn" title="About nycrhythm">ℹ</button>
     </header>
+
+    <div id="aboutPanel" class="about hidden">
+      <div class="about-card">
+        <h3>nycrhythm <small id="aboutBuild"></small></h3>
+        <p>Every train in the NYC subway, live — positions come straight from MTA GTFS-Realtime feeds and are interpolated along official track geometry. For reference only; follow station signage.</p>
+        <p>Data: MTA New York City Transit (GTFS &amp; GTFS-RT) · Basemap © OpenStreetMap © CARTO</p>
+        <p><a href="https://github.com/sc126-cornell/nycrhythm" target="_blank" rel="noopener">Open source (MIT) on GitHub</a> · Sister project: <a href="https://mrtrhythm.scottchen0622.com" target="_blank" rel="noopener">mrtrhythm</a> (Taipei Metro)</p>
+        <button id="aboutClose">Close</button>
+      </div>
+    </div>
 
     <div class="search">
       <input id="searchInput" type="search" placeholder="🔍 Find a station (Times Sq…)" autocomplete="off" />

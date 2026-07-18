@@ -67,6 +67,15 @@ async function boot() {
 
   console.info(`nycrhythm BUILD ${BUILD}`)
 
+  // about panel
+  const aboutPanel = document.getElementById('aboutPanel')!
+  document.getElementById('aboutBuild')!.textContent = BUILD
+  document.getElementById('aboutBtn')!.addEventListener('click', () => aboutPanel.classList.remove('hidden'))
+  document.getElementById('aboutClose')!.addEventListener('click', () => aboutPanel.classList.add('hidden'))
+  aboutPanel.addEventListener('click', (e) => {
+    if (e.target === aboutPanel) aboutPanel.classList.add('hidden')
+  })
+
   // bottom-sheet board on mobile: lift the focused station into the visible upper area
   function focusStation(s: StationInfo, minZoom = 0) {
     map.setView([s.lonlat[1], s.lonlat[0]], Math.max(map.getZoom(), minZoom))

@@ -1,0 +1,41 @@
+# 每日 GTFS 靜態更新：抓 MTA zip → 建路網 → 驗證 → 有變更才 commit（觸發 Vercel 部署）
+# MTA 免金鑰：本 workflow 零 secrets。驗證不過＝job 失敗＝保留昨日資料。
+name: daily-data
+
+on:
+  schedule:
+    - cron: '10 8 * * *' # 08:10 UTC = 04:10 America/New_York (EDT)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Fetch GTFS + build + validate
+        run: |
+          npx tsx pipeline/spike-static.ts
+          npx tsx pipeline/build-network.ts
+          npx tsx pipeline/validate-network.ts
+
+      - name: Commit if changed
+        run: |
+          git config user.name "nycrhythm-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/public/data
+          if git diff --cached --quiet; then
+            echo "No data changes — skipping commit"
+          else
+            git commit -m "data: daily refresh $(TZ=America/New_York date +%F)"
+            git push
+          fi
