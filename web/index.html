@@ -3,28 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="nycrhythm — every train in the NYC subway, live on the map. Powered by MTA GTFS-Realtime." />
-    <meta property="og:title" content="nycrhythm — NYC Subway Live Map" />
+    <meta name="description" content="NYC Rhythm — every train in the NYC subway, live on the map. Powered by MTA GTFS-Realtime." />
+    <meta property="og:title" content="NYC Rhythm — Live Subway Map" />
     <meta property="og:description" content="Open a tab, watch New York breathe. Every train, live." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nycrhythm.scottchen0622.com/" />
     <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>nycrhythm — NYC Subway Live Map</title>
+    <title>NYC Rhythm — Live Subway Map</title>
   </head>
   <body>
     <div id="map"></div>
 
     <header class="topbar">
-      <span class="logo">nycrhythm</span>
+      <span class="logo">NYC Rhythm</span>
       <span id="liveCount" class="badge">loading…</span>
       <span id="nyClock" class="badge clock" title="New York time">--:--:--</span>
-      <button id="aboutBtn" class="iconbtn" title="About nycrhythm">ℹ</button>
+      <button id="aboutBtn" class="iconbtn" title="About NYC Rhythm">ℹ</button>
     </header>
 
     <div id="aboutPanel" class="about hidden">
       <div class="about-card">
-        <h3>nycrhythm <small id="aboutBuild"></small></h3>
+        <h3>NYC Rhythm <small id="aboutBuild"></small></h3>
         <p>Every train in the NYC subway, live — positions come straight from MTA GTFS-Realtime feeds and are interpolated along official track geometry. For reference only; follow station signage.</p>
         <p>Data: MTA New York City Transit (GTFS &amp; GTFS-RT) · Basemap © OpenStreetMap © CARTO</p>
         <p><a href="https://github.com/sc126-cornell/nycrhythm" target="_blank" rel="noopener">Open source (MIT) on GitHub</a> · Sister project: <a href="https://mrtrhythm.scottchen0622.com" target="_blank" rel="noopener">mrtrhythm</a> (Taipei Metro)</p>
