@@ -2,9 +2,9 @@
 
 | 項目 | 內容 |
 |---|---|
-| 狀態 | 🔵 進行中（2026-07-19 用戶指示：實地驗收明日，先進 M4/M5） |
-| 預估 | 1 人日 |
-| 開始 / 完成日期 | 2026-07-19 / — |
+| 狀態 | 🟠 檢查完成（待明日實地 Validate＋用戶 Public 指令＝最終 Gate） |
+| 預估 | 1 人日（實際約 0.15） |
+| 開始 / 完成日期 | 2026-07-19 / 2026-07-19 |
 
 ## 1. 目標（Plan）
 
@@ -17,37 +17,43 @@
 
 ## 2. 工作項目（Do）
 
-- [ ] T45.1 `.github/workflows/daily-data.yml`：cron 08:10 UTC（=04:10 EDT）、無 secrets、bot commit、手動觸發驗證一次全綠
-- [ ] T45.2 favicon.svg＋About 面板（ℹ 鈕、英文、版本戳）＋og meta 補 url
-- [ ] T45.3 BACKLOG.md 建檔（A 驗收遞延／B 技術強化／C 前瞻）
-- [ ] T45.4 README 更新（正式網址、狀態徽章區、雙城故事一句）
-- [ ] T45.5 轉 Public 就緒檢查（無金鑰入 repo、LICENSE、attribution 齊）——**執行待用戶指令**
+- [x] T45.1 每日 CI（2026-07-19：**首航一次全綠**——零 secrets、bot 首筆 `data: daily refresh` commit 已落地並觸發部署）
+- [x] T45.2 favicon（♪ bullet）＋About 面板（英文、姊妹作互鏈）＋og:url——部署驗證 200
+- [x] T45.3 BACKLOG.md（A 遞延 3／B 強化 7／C 前瞻＋流程備忘含 dev server 收尾教訓）
+- [x] T45.4 README 完稿（正式網址、雙城一句故事、How it works）
+- [x] T45.5 Public 就緒 ✓（金鑰痕跡掃描空、LICENSE/README/attribution 齊）——**扣板機待用戶指令**
 
 ## 3. Verify — 技術驗證
 
-- [ ] CI 手動觸發全綠；bot commit 產出或「無變更跳過」訊息正確
-- [ ] About 面板開合、favicon 顯示；正式網址實測
-- [ ] `git log -p | grep -i` 抽查無任何金鑰痕跡（MTA 本就免金鑰，形式確認）
-- [ ] lint／build 綠；Gate 前雙掃描
+- [x] CI 全綠＋bot commit（network.json 戳記更新）＋Vercel 自動部署鏈驗證
+- [x] favicon 200、About 元素在部署 HTML、bundle 一致（index-CuMsP39I）
+- [x] 金鑰痕跡掃描：空（附帶再遇 head 吞 exit code——無害場景，警惕留檔）
+- [x] lint／build 綠；雙掃描於最終 Gate 執行
 
 ## 4. Validate — 需求驗收
 
 - [ ] 明日實地日結果（M2 對板＋M3 體驗）回報良好
 - [ ] 用戶下令轉 Public → 執行 → **雙城完賽** 🎉
 
-## 5. Check 紀錄（完成後填寫）
+## 5. Check 紀錄（2026-07-19 同日填寫）
 
 ### Code Review
-（待填）
+- 範圍：daily-data.yml、About/favicon/og、README/BACKLOG。lint／build 綠。
+- 發現與處置：
+  1. CI 的下載步驟借用 spike-static.ts——可用但語義混用，B7 已列更名（fetch-static.ts）。
+  2. Actions Node 20 deprecation 標註（跑 Node 24，純提示）——雙城共通 backlog。
+  3. Public 就緒掃描中 head 再度吞 exit code（無害場景）——規則不變：關鍵驗證不接管線。
 
 ### Verify 結果
-（待填）
+§3 四項全過：CI 首航零 secrets 一次綠（對比捷奏 TDX 500 首航——免金鑰＋成熟模板紅利）、部署鏈完整、痕跡掃描空。
 
 ### Validate 結果
-（待填）
+待明日實地日（M2 對板＋M3 體驗＋M45 整體）；Public 待用戶板機。
 
 ### 偏差與學習
-（待填）
+1. 估 1 人日、實際約 0.15——收尾章幾乎純模板化。
+2. **nycrhythm 全程統計：M0→M45 檢查完成、單日內完成**（vs 捷奏 4.5 人日）——第二座城市的複利是實打實的 30 倍速。
+3. 背景任務衛生：dev server 用完即收（用戶手機端看到殘留任務的回饋）。
 
 ## 6. 用戶確認（Gate）
 
