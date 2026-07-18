@@ -27,7 +27,8 @@ export function createMap(el: string, net: Network, onStationClick: (s: StationI
     maxZoom: 19,
   }).addTo(map)
 
-  const canvasR = L.canvas({ padding: 0.3 })
+  // tolerance widens the tap hit-area beyond the visible dot (field feedback: hard to tap)
+  const canvasR = L.canvas({ padding: 0.3, tolerance: 8 })
   const colorOf = Object.fromEntries(net.routes.map((r) => [r.id, r.color]))
 
   const drawn = new Set<string>()
@@ -43,12 +44,13 @@ export function createMap(el: string, net: Network, onStationClick: (s: StationI
     ).addTo(map)
   }
 
+  const staRadius = (z: number) => (z >= 15 ? 6 : z >= 13.5 ? 5 : z >= 12 ? 4 : 3)
   let lastStaClick = 0
   const staMarkers: L.CircleMarker[] = []
   for (const st of net.stations) {
     const m = L.circleMarker([st.lonlat[1], st.lonlat[0]], {
       renderer: canvasR,
-      radius: 3,
+      radius: staRadius(map.getZoom()),
       color: dark ? '#cfcfcf' : '#333',
       weight: 1,
       fillColor: dark ? '#1b1e24' : '#fff',
@@ -62,6 +64,10 @@ export function createMap(el: string, net: Network, onStationClick: (s: StationI
       .addTo(map)
     staMarkers.push(m)
   }
+  map.on('zoomend', () => {
+    const r = staRadius(map.getZoom())
+    for (const m of staMarkers) m.setStyle({ radius: r, weight: r >= 5 ? 1.5 : 1 })
+  })
 
   return {
     map,

@@ -16,6 +16,7 @@ export interface DrawItem {
 export interface StationLabel {
   lonlat: Pt
   name: string
+  dup?: boolean // same name exists at other stations (NYC reuses "23 St" etc.)
 }
 
 // yellow/gray bullets need dark glyphs
@@ -71,9 +72,18 @@ export class TrainsLayer {
       ctx.lineJoin = 'round'
       ctx.strokeStyle = dark ? 'rgba(12, 14, 18, 0.9)' : 'rgba(255, 255, 255, 0.9)'
       ctx.fillStyle = dark ? '#e6e6e2' : '#26282c'
+      const dupDrawn = new Map<string, Array<{ x: number; y: number }>>()
       for (const lb of labels) {
         const p = this.map.latLngToContainerPoint([lb.lonlat[1], lb.lonlat[0]])
         if (p.x < -80 || p.y < -30 || p.x > size.x + 80 || p.y > size.y + 30) continue
+        if (lb.dup) {
+          // parallel-avenue twins ("23 St" on 6th/7th/8th Ave) collide when zoomed out —
+          // draw the first, skip same-name neighbors until zoom separates them
+          const seen = dupDrawn.get(lb.name)
+          if (seen?.some((q) => Math.abs(q.x - p.x) < 70 && Math.abs(q.y - p.y) < 16)) continue
+          if (seen) seen.push({ x: p.x, y: p.y })
+          else dupDrawn.set(lb.name, [{ x: p.x, y: p.y }])
+        }
         ctx.strokeText(lb.name, p.x, p.y + 7)
         ctx.fillText(lb.name, p.x, p.y + 7)
       }

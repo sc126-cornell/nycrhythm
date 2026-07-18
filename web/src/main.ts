@@ -10,7 +10,7 @@ import { initSearch } from './ui/search.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'M3a-20260719'
+export const BUILD = 'M45b-20260719'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')
@@ -87,9 +87,11 @@ async function boot() {
   {
     const groups = new Map<string, { name: string; pts: Pt[] }>()
     for (const st of net.stations) {
-      const key = st.cx ? `cx:${st.cx}` : `n:${st.name}:${st.id}`
-      let g = groups.get(st.cx ? key : `n:${st.name}`)
-      if (!g) groups.set(st.cx ? key : `n:${st.name}`, (g = { name: st.name, pts: [] }))
+      // complexes merge to one centroid label; standalone stations keep their own —
+      // NYC reuses names across lines ("23 St" ×5), so name-keyed grouping erased real labels
+      const key = st.cx ? `cx:${st.cx}` : `id:${st.id}`
+      let g = groups.get(key)
+      if (!g) groups.set(key, (g = { name: st.name, pts: [] }))
       g.pts.push(st.lonlat)
     }
     for (const g of groups.values()) {
@@ -98,6 +100,9 @@ async function boot() {
         name: g.name,
       })
     }
+    const nameCount = new Map<string, number>()
+    for (const lb of labels) nameCount.set(lb.name, (nameCount.get(lb.name) ?? 0) + 1)
+    for (const lb of labels) if ((nameCount.get(lb.name) ?? 0) > 1) lb.dup = true
   }
 
   const board = initStationBoard(net, rt, colorOf, () => syncHash())
@@ -254,7 +259,9 @@ async function boot() {
         selected = trip
         if (lastSample && now > lastSample.t) {
           const v = (distM(lastSample.lonlat, st.lonlat) / (now - lastSample.t)) * 3.6
-          speedKmh = speedKmh * 0.85 + v * 0.15
+          // poll re-anchors teleport the interpolated position for one frame — those
+          // samples read as hundreds of km/h (NYC tops out ~88) and must not enter the EMA
+          if (v < 110) speedKmh = speedKmh * 0.85 + v * 0.15
         }
         lastSample = { t: now, lonlat: st.lonlat }
         lastState = st
