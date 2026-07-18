@@ -1,7 +1,7 @@
 import './style.css'
 
 // Build stamp: bump letter per deploy, shown on screen and console
-export const BUILD = 'M0a-20260719'
+export const BUILD = 'M1a-20260719'
 
 const status = document.getElementById('status')!
 status.textContent = `BUILD ${BUILD}`
