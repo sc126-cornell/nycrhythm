@@ -4,14 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="nycrhythm — every train in the NYC subway, live on the map. Powered by MTA GTFS-Realtime." />
+    <meta property="og:title" content="nycrhythm — NYC Subway Live Map" />
+    <meta property="og:description" content="Open a tab, watch New York breathe. Every train, live." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
     <title>nycrhythm — NYC Subway Live Map</title>
   </head>
   <body>
-    <main class="boot">
-      <h1>nycrhythm</h1>
-      <p class="tagline">Open a tab, watch New York breathe.</p>
-      <p id="status">Booting…</p>
-    </main>
+    <div id="map"></div>
+
+    <header class="topbar">
+      <span class="logo">nycrhythm</span>
+      <span id="liveCount" class="badge">loading…</span>
+      <span id="nyClock" class="badge clock" title="New York time">--:--:--</span>
+    </header>
+
+    <div id="fpsMeter" class="fps hidden"></div>
+    <div id="traininfo" class="traininfo hidden"></div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

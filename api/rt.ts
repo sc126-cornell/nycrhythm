@@ -65,6 +65,7 @@ export default async function handler(req: Req, res: Res) {
       .filter((e) => e.vehicle?.trip?.tripId)
       .map((e) => ({ t: e.vehicle!.trip!.tripId!, s: e.vehicle!.stopId ?? '', st: e.vehicle!.currentStatus ?? -1, ts: e.vehicle!.timestamp ?? 0 }))
     res.setHeader('Cache-Control', 's-maxage=15, stale-while-revalidate=30')
+    res.setHeader('Access-Control-Allow-Origin', '*') // 公開資料；供本地 dev 直打正式 API
     res.status(200).json({ ok: true, at: obj.header.timestamp, trips, vehicles })
   } catch {
     res.setHeader('Cache-Control', 's-maxage=10')
