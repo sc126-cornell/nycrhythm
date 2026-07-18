@@ -2,9 +2,9 @@
 
 | 項目 | 內容 |
 |---|---|
-| 狀態 | 🟡 規劃就緒（M0+M1 Gate 已過，隨時開工） |
-| 預估 | 2 人日 |
-| 開始 / 完成日期 | — / — |
+| 狀態 | 🔵 核心完成（正式站實測通過；待平日尖峰觀測＋用戶實地 Validate） |
+| 預估 | 2 人日（核心實際約 0.4） |
+| 開始 / 完成日期 | 2026-07-19 / — |
 
 ## 1. 目標（Plan)
 
@@ -17,12 +17,12 @@
 
 ## 2. 工作項目（Do）
 
-- [ ] T2.1 web 殼層改造：首頁=地圖、topbar（live 班數徽章）、英文文案；佔位頁退役
-- [ ] T2.2 `core/rt.ts`：8 餵送輪詢（20s、Promise.all、失敗靜默）、trips 合流、過期清理（>3 分未見即除）
-- [ ] T2.3 `core/position.ts`：插值（bracket 停靠 ease；now<首停靠→駐留首站；now>末停靠→移除）＋ shape 解析（直配→defaults）
-- [ ] T2.4 `map/basemap.ts`＋`map/trains.ts` 移植：CARTO retina、路網（defaults 變體為主避免 257 條全疊）、站點＋自繪站名（complex 合併命名）、bullet 列車標記＋命中測試
-- [ ] T2.5 資訊卡（英文）：route bullet、目的地（末停靠站名）、下一站＋ETA 倒數
-- [ ] T2.6 效能實測：平日尖峰（週一早）500–700 班 fps；?fps=1 錶移植
+- [x] T2.1 首頁即地圖、topbar（live 班數＋NY 時鐘）、全英文（2026-07-19）
+- [x] T2.2 core/rt：8 餵送輪詢合流＋**first-stop 變化→departed 觀測**（GTFS-RT 只列未來停靠的插值關鍵）＋stale 清理；document.hidden 閘門（省電）
+- [x] T2.3 core/position：bracket ease＋prev 觀測／ladder 墊底雙路徑＋終點駐留 45s；shape 直配→defaults
+- [x] T2.4 地圖層：CARTO retina、defaults 變體路網（避免 257 疊圖）、complex 合併站名自繪、**NYC bullet（亮度自適應字色——黃底深字）**＋命中測試
+- [x] T2.5 資訊卡實測：「A・To Far Rockaway-Mott Av・Next: Broad Channel · 1m45s」——點擊處正是跨牙買加灣段，地理與資料吻合
+- [x] T2.6 效能（週六晚）：**488 班 61fps**（門檻 50）；平日尖峰 600+ 班於週一自然觀測補記；?fps=1 已備
 
 ## 3. Verify — 技術驗證
 
