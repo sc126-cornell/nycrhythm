@@ -2,7 +2,7 @@
 
 | 項目 | 內容 |
 |---|---|
-| 狀態 | 🔵 進行中（2026-07-19 用戶 Gate「開工」） |
+| 狀態 | 🟠 檢查完成（待與 M1 合併 Gate） |
 | 預估 | 1 人日 |
 | 開始 / 完成日期 | 2026-07-19 / — |
 
@@ -20,7 +20,7 @@
 - [x] T0.1 骨架移植（2026-07-19：monorepo＋工具鏈就位、英文起始頁、Dropbox 忽略已套）
 - [x] T0.2 GTFS-RT Spike（2026-07-19：**8/8 解碼成功、529 trips／408 vehicles 實時在線**、新鮮度 0–10s、94%+ 含未來停靠；週末改道實錄（E 現身 bdfm）證明 RT-first 天然吸收改道）
 - [x] T0.3 GTFS 靜態 Spike（2026-07-19：29 routes／496 母站＋992 月台（N/S 尾碼＝方向）／shapes 257 變體／trips 20,309／stop_times 34.7MB 563K 行／transfers 613）
-- [ ] T0.4 `/api/health`＋`/api/rt` 原型**程式已就緒**；👤 待用戶 Vercel import repo（同捷奏四欄位流程）後驗證邊緣快取 HIT（2026-07-19 用戶指示：M1 先行平行開跑，本格不擋）
+- [x] T0.4 完成（2026-07-19：用戶 Vercel import（專案名 `nycrhythm-web`、framework=Other 四欄位正確）→ 全端點 200、**/api/rt MISS→HIT**、即時內容正確（1 線列車＋未來停靠）。公開網址 https://nycrhythm-web.vercel.app）
 - [x] T0.5 schema 凍結（SPIKE-NOTES §5＋SDD 精簡版；色票以官方幹線色常數為準——簡化 CSV 解析的引號逗號問題已記錄，正式管線需完整 parser）
 
 ## 3. Verify — 技術驗證
@@ -36,19 +36,22 @@
 - [ ] SPIKE-NOTES 摘要向用戶回報；schema 凍結經同意
 - [ ] PRD §6 風險逐項重評（升/降級）後進 M1
 
-## 5. Check 紀錄（完成後填寫）
+## 5. Check 紀錄（2026-07-19 填寫）
 
 ### Code Review
-（待填）
+- 範圍：spike-rt／spike-static（一次性工具）、api/{health,rt}、骨架。lint／build 綠（M0 曾有管線吞 lint exit code 事故——已修並立規：驗證指令不接管線）。
+- 捷奏教訓前置套用：Vercel Functions 相對匯入 `.js`（rt.ts 無共用模組故未涉）、Dropbox node_modules 忽略、四欄位 import 指示。
 
 ### Verify 結果
-（待填）
+全過：8/8 餵送解碼（529 trips）、靜態全解剖、/api/rt 部署後 MISS→HIT、瘦身單餵送遠低於 150KB（irt 原始 179KB→瘦身後約 60KB 級）。
 
 ### Validate 結果
-（待填）
+SPIKE 摘要已回報；schema 凍結（SPIKE-NOTES §5）已依實測落地並被 M1 消化。正式同意隨 M0+M1 合併 Gate。
 
 ### 偏差與學習
-（待填）
+1. 用戶指示 M1 與 T0.4 平行——PDCA 的 Gate 序列可由用戶明示調整，紀錄即可。
+2. Vercel 專案名為 `nycrhythm-web`（用戶 import 時所取）；公開網址 nycrhythm-web.vercel.app。
+3. 估 1 人日、實際約 0.3 人日。
 
 ## 6. 用戶確認（Gate）
 
