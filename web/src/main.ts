@@ -10,7 +10,7 @@ import { initSearch } from './ui/search.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'M45b-20260719'
+export const BUILD = 'M45c-20260719'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')
@@ -87,9 +87,10 @@ async function boot() {
   {
     const groups = new Map<string, { name: string; pts: Pt[] }>()
     for (const st of net.stations) {
-      // complexes merge to one centroid label; standalone stations keep their own —
-      // NYC reuses names across lines ("23 St" ×5), so name-keyed grouping erased real labels
-      const key = st.cx ? `cx:${st.cx}` : `id:${st.id}`
+      // one label per distinct name: a complex merges same-named platforms only —
+      // Times Sq + Port Authority share a complex but are separate places — and
+      // standalone stations key by id, since NYC reuses names across lines ("23 St" ×5)
+      const key = st.cx ? `cx:${st.cx}:${st.name}` : `id:${st.id}`
       let g = groups.get(key)
       if (!g) groups.set(key, (g = { name: st.name, pts: [] }))
       g.pts.push(st.lonlat)
