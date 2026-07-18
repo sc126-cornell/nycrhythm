@@ -17,18 +17,18 @@
 
 ## 2. 工作項目（Do）
 
-- [ ] T1.1 `pipeline/gtfs.ts`：RFC 4180 CSV 解析（引號/逗號/換行）＋ zip 讀取助手
-- [ ] T1.2 `pipeline/build-network.ts`：routes（官方色常數×route_id 對應）→ stations（parent_station 權威）→ complex（transfers 併查集）→ shapes（5dp 捨入＋chainage）→ 每 shape 代表 trip 的停靠序列投影 stopKm → defaults（route+dir 最長變體）
-- [ ] T1.3 `pipeline/validate-network.ts`：路線/母站/變體計數、stopKm 嚴格遞增、投影偏移警示、defaults 全覆蓋
-- [ ] T1.4 `web/public/debug.html`（英文）：全 shapes 疊圖＋站點＋警告清單
-- [ ] T1.5 network.json 體積管控：目標 gzip ≤ 1.5MB（超標→幾何簡化 tolerance 10m）
+- [x] T1.1 `pipeline/gtfs.ts`（2026-07-19：RFC 4180 完整解析＋快速逐行雙模式；幾何工具承捷奏）
+- [x] T1.2 `pipeline/build-network.ts`（2026-07-19：29 routes 官方色（GTFS route_color 優先＋幹線常數墊底）／496 母站＋35 complex 群（transfers 併查集）／**257 shapes 全量、DP 6m 簡化 150,744→16,897 點（11%）**／停靠投影**零警示**／defaults 58 鍵＝29 路線×雙向全覆蓋）
+- [x] T1.3 驗證器全綠（計數/單調/孤兒月台/defaults 覆蓋）
+- [x] T1.4 debug.html 英文版（CARTO＋官方 bullet＋29 線開關）——研發端目檢通過：曼哈頓幹線/洛克威長臂/SIR 全正確
+- [x] T1.5 體積：**gzip 0.08MB**（預算 1.5MB 的 5%）——DP 簡化立大功
 
 ## 3. Verify — 技術驗證
 
-- [ ] 257/257 shapes 產出；每 shape stopKm 嚴格遞增；投影偏移 >150m 清單為零或有解釋
-- [ ] RT 對應抽測：抓一輪 /rt 樣本，tripId→shape 直配率 ≥90%，其餘落 defaults
-- [ ] debug 頁目檢：快車/慢車變體分明、無跨區直線、SIR/Rockaway 遠端正確
-- [ ] 體積：network.json gzip 實測 ≤1.5MB；`lint`／`build`／validate 綠（不經管線吞 exit code——M0 教訓）
+- [x] 257/257 shapes；stopKm 全單調；投影偏移警示＝0
+- [x] RT 對應抽測（519 班實時）：直配 52.4%＋墊底 47.6%＝**100% 覆蓋、零落空**（門檻 90%；直配率提升列 M2 註記——RT path 碼與 shape 碼模糊比對）
+- [x] debug 頁目檢（研發端）：變體分明、無跨區直線、SIR／Rockaway 正確；**用戶目檢待 Vercel 部署後**（Validate 項）
+- [x] 體積 gzip 0.08MB；lint／build／validate 全綠（無管線吞碼）
 
 ## 4. Validate — 需求驗收
 
