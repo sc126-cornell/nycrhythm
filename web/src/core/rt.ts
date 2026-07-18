@@ -6,7 +6,7 @@ import type { LiveTrip, RtStop } from './types.ts'
 
 const FEEDS = ['irt', 'ace', 'bdfm', 'g', 'jz', 'nqrw', 'l', 'si'] as const
 // Local dev has no Vercel functions — hit production API (CORS enabled there)
-const API_BASE = import.meta.env.DEV ? 'https://nycrhythm-web.vercel.app' : ''
+const API_BASE = import.meta.env.DEV ? 'https://nycrhythm.scottchen0622.com' : ''
 
 interface RtResponse {
   ok: boolean

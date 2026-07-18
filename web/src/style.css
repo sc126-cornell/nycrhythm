@@ -153,3 +153,199 @@ body {
   line-height: 20px;
   margin-right: 8px;
 }
+
+.bullet.sm {
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  line-height: 16px;
+  margin-right: 6px;
+}
+
+/* ---- search ---- */
+.search {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1100;
+  width: 240px;
+}
+
+.search input {
+  width: 100%;
+  background: var(--panel);
+  color: var(--fg);
+  border: 0;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  box-shadow: var(--shadow);
+  outline: none;
+}
+
+.search .results {
+  margin-top: 6px;
+  background: var(--panel);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  overflow-y: auto;
+  max-height: 46vh;
+}
+
+.sr-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sr-row:hover {
+  background: rgba(128, 128, 128, 0.15);
+}
+
+.sr-row small,
+.sr-none {
+  color: var(--muted);
+}
+
+.sr-none {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+/* ---- station board ---- */
+.stationboard {
+  position: fixed;
+  top: 56px;
+  right: 10px;
+  z-index: 1000;
+  width: 300px;
+  max-height: 62vh;
+  overflow-y: auto;
+  background: var(--panel);
+  color: var(--fg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.sb-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.sb-head b {
+  font-size: 14px;
+  flex: 1;
+}
+
+.sb-head button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.sb-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sb-row:last-of-type {
+  border-bottom: 0;
+}
+
+.sb-row .dest {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.sb-row .eta {
+  min-width: 52px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.sb-row .eta.soon {
+  color: #d85a30;
+  font-weight: 600;
+}
+
+.sb-empty {
+  text-align: center;
+  padding: 18px 0 10px;
+  color: var(--muted);
+}
+
+.sb-foot {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---- back to train ---- */
+.backbtn {
+  position: fixed;
+  right: 12px;
+  bottom: calc(130px + env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+/* ---- mobile: two-row top (day-1 rule from mrtrhythm) ---- */
+@media (max-width: 640px) {
+  .topbar {
+    left: 10px;
+    right: 10px;
+    justify-content: space-between;
+  }
+  .search {
+    top: 54px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+  .search .results {
+    max-height: 34vh;
+  }
+  .fps {
+    top: 100px;
+  }
+  .stationboard {
+    top: auto;
+    right: 10px;
+    left: 10px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    max-height: 36vh;
+  }
+  .traininfo {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+  .backbtn {
+    bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+  }
+}

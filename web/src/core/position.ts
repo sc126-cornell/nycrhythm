@@ -82,6 +82,9 @@ export function positionOf(trip: LiveTrip, now: number, geo: ShapeGeo): TrainSta
     // origin terminal or unplaceable: stand at the next stop's platform
     return state(kmNext, kmNext + 50, next.s, Math.max(0, next.a - now), false)
   }
+  // cap the interpolation window: a stale `prev` (hidden-tab gap) must not stretch
+  // the segment start far into the past (M2 review item)
+  fromAt = Math.max(fromAt, next.a - 300)
   const p = ease(Math.min(1, Math.max(0, (now - fromAt) / (next.a - fromAt))))
   return state(fromKm + (kmNext - fromKm) * p, kmNext, next.s, next.a - now, p > 0 && p < 1)
 }

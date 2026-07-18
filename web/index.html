@@ -19,8 +19,15 @@
       <span id="nyClock" class="badge clock" title="New York time">--:--:--</span>
     </header>
 
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="🔍 Find a station (Times Sq…)" autocomplete="off" />
+      <div id="searchResults" class="results hidden"></div>
+    </div>
+
+    <div id="stationboard" class="stationboard hidden"></div>
     <div id="fpsMeter" class="fps hidden"></div>
     <div id="traininfo" class="traininfo hidden"></div>
+    <button id="backBtn" class="backbtn hidden">🎥 Back to train</button>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
