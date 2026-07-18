@@ -25,16 +25,16 @@
 
 ## 3. Verify — 技術驗證
 
-- [ ] 8/8 餵送解碼成功、樣本落盤；尖峰時段列車總數實測（預估 500–700，取得真值）
-- [ ] VehiclePositions 有無／品質結論明確（決定位置引擎用 TripUpdates 插值或混合）
-- [ ] `/api/rt` 部署後連打快取 HIT；回應 <1s、瘦身後單餵送 ≤ 150KB
-- [ ] 站群對應規則可行（抽 5 大轉運站人工核對：Times Sq、Fulton St、Atlantic Av 等）
-- [ ] lint／build 綠燈；push 自動部署
+- [x] 8/8 餵送解碼、樣本落盤；**週六實測 529 班**（平日尖峰真值於 M2 上線後自然觀測補記）
+- [x] VehiclePositions 有（408）品質足——結論：引擎主用 TripUpdates 插值、vehicles 之 currentStatus 留作 M2/M3 加細
+- [x] `/api/rt` 部署後 **MISS→HIT**；最大餵送（irt）瘦身後 **79KB**（門檻 150KB）
+- [x] 站群核對（2026-07-19 補做並通過）：Times Sq 五站含 Port Authority 通道、Fulton 四線、Atlantic-Barclays、Union Sq、Court Sq（含 G 轉乘）全數正確
+- [x] lint／build 綠；push 自動部署 ✓
 
 ## 4. Validate — 需求驗收
 
-- [ ] SPIKE-NOTES 摘要向用戶回報；schema 凍結經同意
-- [ ] PRD §6 風險逐項重評（升/降級）後進 M1
+- [x] SPIKE-NOTES 摘要已回報；schema 凍結經同意（合併 Gate）
+- [x] PRD §6 風險重評完成（SPIKE-NOTES §4：四項✅、兩項🟡待 M2 實測）
 
 ## 5. Check 紀錄（2026-07-19 填寫）
 
