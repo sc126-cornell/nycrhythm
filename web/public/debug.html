@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>nycrhythm debug — network overlay check</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  html, body { margin: 0; height: 100%; }
+  #map { height: 100%; }
+  .panel {
+    position: absolute; top: 10px; right: 10px; z-index: 1000;
+    background: rgba(255,255,255,.95); border-radius: 8px; padding: 10px 12px;
+    font: 12px/1.6 system-ui, sans-serif; max-width: 280px; max-height: 76vh; overflow: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+  .panel h3 { margin: 0 0 6px; font-size: 13px; }
+  .warn { color: #a33; }
+  .rt { cursor: pointer; user-select: none; }
+  .meta { color: #888; margin-top: 6px; }
+  .bullet { display:inline-block; width: 14px; height: 14px; border-radius: 50%; color:#fff;
+    font-weight: 700; font-size: 9px; text-align: center; line-height: 14px; margin-right: 4px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="panel" id="panel"><h3>Loading…</h3></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map', { zoomControl: true })
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© OpenStreetMap © CARTO · Data: MTA', maxZoom: 19,
+}).addTo(map)
+
+fetch('/data/network.json').then(r => r.json()).then(net => {
+  const panel = document.getElementById('panel')
+  const colorOf = Object.fromEntries(net.routes.map(r => [r.id, r.color]))
+  const groups = new Map() // route → layerGroup
+  const shapeCount = {}
+  const canvasR = L.canvas({ padding: 0.3 })
+
+  for (const [id, s] of Object.entries(net.shapes)) {
+    const route = net.shapeRoute[id] ?? id.split('.')[0]
+    shapeCount[route] = (shapeCount[route] ?? 0) + 1
+    const poly = L.polyline(s.pts.map(([lon, lat]) => [lat, lon]), {
+      renderer: canvasR, color: colorOf[route] ?? '#666', weight: 2.5, opacity: 0.75,
+    })
+    if (!groups.has(route)) groups.set(route, L.layerGroup().addTo(map))
+    groups.get(route).addLayer(poly)
+  }
+
+  const staLayer = L.layerGroup().addTo(map)
+  for (const st of net.stations) {
+    L.circleMarker([st.lonlat[1], st.lonlat[0]], {
+      renderer: canvasR, radius: 3, color: '#222', weight: 1, fillColor: '#fff', fillOpacity: 1,
+    }).bindTooltip(`${st.name} (${st.id}${st.cx ? ' · complex' : ''})`).addTo(staLayer)
+  }
+
+  let html = `<h3>nycrhythm network (${net.version})</h3>`
+  const routesSorted = net.routes.map(r => r.id).sort()
+  for (const r of routesSorted) {
+    if (!groups.has(r)) continue
+    html += `<div class="rt"><label><input type="checkbox" checked data-rt="${r}">` +
+      `<span class="bullet" style="background:${colorOf[r]}">${r.length <= 2 ? r : ''}</span>` +
+      `${r} <small>${shapeCount[r] ?? 0} variants</small></label></div>`
+  }
+  const warns = (net.meta && net.meta.warnings) || []
+  html += `<div class="meta">stations ${net.stations.length} · shapes ${Object.keys(net.shapes).length} · warnings ${warns.length}</div>`
+  for (const w of warns) html += `<div class="warn">· ${w}</div>`
+  panel.innerHTML = html
+
+  panel.addEventListener('change', (e) => {
+    const rt = e.target.getAttribute('data-rt')
+    const g = groups.get(rt)
+    if (g) e.target.checked ? g.addTo(map) : g.remove()
+  })
+
+  map.setView([40.735, -73.95], 11)
+}).catch(err => {
+  document.getElementById('panel').innerHTML = `<h3 class="warn">Failed to load network.json</h3><div>${err}</div>`
+})
+</script>
+</body>
+</html>

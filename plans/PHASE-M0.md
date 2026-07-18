@@ -20,7 +20,7 @@
 - [x] T0.1 骨架移植（2026-07-19：monorepo＋工具鏈就位、英文起始頁、Dropbox 忽略已套）
 - [x] T0.2 GTFS-RT Spike（2026-07-19：**8/8 解碼成功、529 trips／408 vehicles 實時在線**、新鮮度 0–10s、94%+ 含未來停靠；週末改道實錄（E 現身 bdfm）證明 RT-first 天然吸收改道）
 - [x] T0.3 GTFS 靜態 Spike（2026-07-19：29 routes／496 母站＋992 月台（N/S 尾碼＝方向）／shapes 257 變體／trips 20,309／stop_times 34.7MB 563K 行／transfers 613）
-- [ ] T0.4 `/api/health`＋`/api/rt` 原型**程式已就緒**；👤 待用戶 Vercel import repo（同捷奏四欄位流程）後驗證邊緣快取 HIT
+- [ ] T0.4 `/api/health`＋`/api/rt` 原型**程式已就緒**；👤 待用戶 Vercel import repo（同捷奏四欄位流程）後驗證邊緣快取 HIT（2026-07-19 用戶指示：M1 先行平行開跑，本格不擋）
 - [x] T0.5 schema 凍結（SPIKE-NOTES §5＋SDD 精簡版；色票以官方幹線色常數為準——簡化 CSV 解析的引號逗號問題已記錄，正式管線需完整 parser）
 
 ## 3. Verify — 技術驗證
