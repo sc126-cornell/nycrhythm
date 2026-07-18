@@ -2,7 +2,7 @@
 
 | 項目 | 內容 |
 |---|---|
-| 狀態 | 🟠 檢查完成（待明日實地 Validate＋用戶 Public 指令＝最終 Gate） |
+| 狀態 | 🟢 已發佈 Public（2026-07-19）；殘項：7/20 實地日回報（M2 對板＋M3 體驗） |
 | 預估 | 1 人日（實際約 0.15） |
 | 開始 / 完成日期 | 2026-07-19 / 2026-07-19 |
 
@@ -21,7 +21,7 @@
 - [x] T45.2 favicon（♪ bullet）＋About 面板（英文、姊妹作互鏈）＋og:url——部署驗證 200
 - [x] T45.3 BACKLOG.md（A 遞延 3／B 強化 7／C 前瞻＋流程備忘含 dev server 收尾教訓）
 - [x] T45.4 README 完稿（正式網址、雙城一句故事、How it works）
-- [x] T45.5 Public 就緒 ✓（金鑰痕跡掃描空、LICENSE/README/attribution 齊）——**扣板機待用戶指令**
+- [x] T45.5 Public 就緒 ✓（金鑰痕跡掃描空、LICENSE/README/attribution 齊）——**2026-07-19 用戶下令，已執行**（gh 確認 visibility=PUBLIC、license=MIT）
 
 ## 3. Verify — 技術驗證
 
@@ -32,8 +32,8 @@
 
 ## 4. Validate — 需求驗收
 
-- [ ] 明日實地日結果（M2 對板＋M3 體驗）回報良好
-- [ ] 用戶下令轉 Public → 執行 → **雙城完賽** 🎉
+- [ ] 實地日結果（M2 對板＋M3 體驗）回報良好（7/20，用戶在紐約）
+- [x] 用戶下令轉 Public → 執行 → **雙城完賽** 🎉（2026-07-19 用戶指令；gh 確認 PUBLIC/MIT）
 
 ## 5. Check 紀錄（2026-07-19 同日填寫）
 
@@ -62,7 +62,11 @@
 3. **站點圓圈太小難點**：固定 radius 3。修：隨 zoom 放大（z≥15→6 / z≥13.5→5 / z≥12→4），canvas renderer 加 `tolerance: 8` 擴大點擊判定。
 教訓：①插值引擎的任何「重新錨定」都是速度／動畫的汙染源，衍生量（速度）要有物理合理性守門；②凡按名稱做 key 的邏輯在 NYC 都要重新審視（同名站是常態不是例外）——與捷運「站名唯一」的直覺相反。
 
+### 實地回饋 R2（2026-07-19 晚；commit 39dc17d，BUILD M45c）
+用戶再報一站無標籤（42 St-Port Authority，A/C/E，紅圈截圖）：成因與 R1 不同——「每 complex 一枚標籤」的設計對**含多個不同站名的 complex** 失效（35 個 complex 中 17 個如此：Times Sq＋Port Authority、Bleecker＋Broadway-Lafayette、51 St＋Lex/53、WTC 四名組…），遠端成員全裸。修：complex 改「**每個不同站名一枚標籤**」（同名月台仍合併質心）。資料驗證：標籤 444→464＝409 獨立站＋55 組（cx×名）全覆蓋 PASS；Port Authority 標籤座標偏移 0.0 m；五個多名 complex 抽測全 YES。
+教訓：「一個 complex＝一個地點」是台北直覺；NYC 的 complex 是**通道相連的多個地點**，顯示粒度應以「站名」為準而非 complex。
+
 ## 6. 用戶確認（Gate）
 
-- [ ] 已回報並取得 v1.0 出貨確認（日期：＿＿＿）
-- [ ] Gate 前雙掃描已執行
+- [x] 已取得用戶「轉 Public」指令並執行＝發佈確認（日期：2026-07-19；實地日回報 7/20 收尾於 Validate ①與 M3 Gate）
+- [x] Gate 前雙掃描已執行（2026-07-19：未勾項僅餘 7/20 實地日相關與模板佔位，無漏網）
