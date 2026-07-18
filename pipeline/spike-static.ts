@@ -1,5 +1,5 @@
 // T0.3 GTFS 靜態 Spike：下載官方 zip，盤點 routes/stops/shapes/trips/stop_times/transfers
-import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import AdmZip from 'adm-zip'
