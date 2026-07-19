@@ -11,7 +11,7 @@ import { initLocate } from './ui/locate.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'F2c-20260720'
+export const BUILD = 'F3-20260720'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')
@@ -107,7 +107,17 @@ async function boot() {
     for (const lb of labels) if ((nameCount.get(lb.name) ?? 0) > 1) lb.dup = true
   }
 
-  const board = initStationBoard(net, rt, colorOf, () => syncHash())
+  const board = initStationBoard(net, rt, colorOf, () => syncHash(), (tripId) => {
+    // board row tap = select that run, same as tapping its bullet on the map
+    const trip = rt.trips.get(tripId)
+    if (!trip) return
+    const g = geo.resolve(trip.id, trip.route)
+    const st = g ? positionOf(trip, Date.now() / 1000, g) : null
+    if (!st) return
+    board.close()
+    select(trip, st)
+    map.setView([st.lonlat[1], st.lonlat[0]], Math.max(map.getZoom(), 14))
+  })
   initSearch(net, (s) => {
     board.open(s)
     focusStation(s, 14)

@@ -26,6 +26,7 @@ export function initStationBoard(
   rt: RtStore,
   colorOf: Record<string, string>,
   onChange: () => void,
+  onPick?: (tripId: string) => void,
 ): StationBoard {
   const el = document.getElementById('stationboard')!
 
@@ -54,7 +55,14 @@ export function initStationBoard(
   let lastKey = -1
 
   el.addEventListener('click', (e) => {
-    if ((e.target as HTMLElement).closest('[data-close]')) api.close()
+    const t = e.target as HTMLElement
+    if (t.closest('[data-close]')) {
+      api.close()
+      return
+    }
+    // rows are rebuilt on signature change only, so delegation keeps taps alive
+    const row = t.closest<HTMLElement>('[data-trip]')
+    if (row?.dataset.trip && onPick) onPick(row.dataset.trip)
   })
 
   const collect = (nowSec: number): Row[] => {
@@ -103,10 +111,10 @@ export function initStationBoard(
     } else {
       for (const r of rows) {
         html +=
-          `<div class="sb-row"><span class="dest"><span class="bullet sm" style="background:${r.color}">${r.route}</span>` +
+          `<div class="sb-row" data-trip="${r.tripId}"><span class="dest"><span class="bullet sm" style="background:${r.color}">${r.route}</span>` +
           `${r.dest}</span><span class="eta${r.eta < 45 ? ' soon' : ''}">${etaText(r.eta)}</span></div>`
       }
-      html += `<div class="sb-foot">Live MTA arrivals · updates every 20s</div>`
+      html += `<div class="sb-foot">Live MTA arrivals · tap a train to select it</div>`
     }
     el.innerHTML = html
   }
