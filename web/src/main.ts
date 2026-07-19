@@ -7,10 +7,11 @@ import { positionOf, type TrainState } from './core/position.ts'
 import { initTheme } from './ui/theme.ts'
 import { initStationBoard } from './ui/stationboard.ts'
 import { initSearch } from './ui/search.ts'
+import { initLocate } from './ui/locate.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'M45c-20260719'
+export const BUILD = 'F1-20260719'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')
@@ -110,6 +111,9 @@ async function boot() {
   initSearch(net, (s) => {
     board.open(s)
     focusStation(s, 14)
+  })
+  initLocate(map, () => {
+    if (follow === 'lock') setFollow('free')
   })
 
   // ---- info card (skeleton once; per-frame text updates — iOS rule) ----

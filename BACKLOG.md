@@ -22,6 +22,12 @@
 | B6 | eco 判斷 | UA 嗅探 → 能力偵測（承捷奏 backlog） |
 | B7 | spike-static.ts 更名 | CI 借用 spike 腳本下載 zip——語義整理為 fetch-static.ts |
 
+## D. post-v1 已出貨功能
+
+| 日期 | 功能 | 備註 |
+|---|---|---|
+| 2026-07-19 | 📍 我的位置（用戶提議） | 頂欄切換鈕；watchPosition 藍點＋精度圈；首次定位置中一次、跟車自動降 free；NYC 80km 外不移鏡頭；定位資料只在裝置上、不外傳（BUILD F1） |
+
 ## C. 前瞻（不承諾）
 
 Alerts 橫幅（MTA alerts 餵送）、時間旅行（靜態班表重播）、PWA、多城市引擎抽象（等雙城都穩定運轉後再議）、LIRR/Metro-North 擴充

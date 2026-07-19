@@ -95,6 +95,32 @@ body {
   color: var(--fg);
 }
 
+/* emoji glyphs ignore `color` — signal locate on/off with grayscale instead */
+#locateBtn {
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
+#locateBtn.active {
+  filter: none;
+  opacity: 1;
+}
+
+.toast {
+  position: fixed;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1300;
+  background: var(--panel);
+  color: var(--fg);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
 .about {
   position: fixed;
   inset: 0;

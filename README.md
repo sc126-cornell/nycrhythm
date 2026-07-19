@@ -11,7 +11,7 @@ Sister project of [mrtrhythm](https://github.com/sc126-cornell/mrtrhythm) (Taipe
 
 - **Data pipeline** (`pipeline/`, daily via GitHub Actions): MTA GTFS static → `network.json` (29 routes, 496 stations + transfer complexes, 257 track-shape variants with per-stop chainage). No API key required.
 - **RT proxy** (`api/rt`): decodes 8 GTFS-RT protobuf feeds, slims to JSON, edge-cached 15s — MTA load is decoupled from visitor count.
-- **Engine** (`web/`): each train is interpolated along official track geometry between its own real-time stop predictions. Follow mode, station arrival boards (transfer-complex aware), search, deep links. Auto day/night follows the NYC sun.
+- **Engine** (`web/`): each train is interpolated along official track geometry between its own real-time stop predictions. Follow mode, station arrival boards (transfer-complex aware), search, deep links, your GPS position (📍, on-device only). Auto day/night follows the NYC sun.
 
 ## Develop
 
