@@ -137,19 +137,24 @@ body {
 
 .me-beam {
   position: absolute;
-  left: -30px;
-  top: -30px;
-  width: 60px;
-  height: 60px;
+  left: -48px;
+  top: -48px;
+  width: 96px;
+  height: 96px;
   opacity: 0;
   transform-origin: 50% 50%;
   transition:
     transform 0.15s ease-out,
     opacity 0.4s;
   /* 60° wedge centered on up (north); radial mask fades it with distance */
-  background: conic-gradient(from -30deg, rgba(26, 115, 232, 0.5) 0deg 60deg, transparent 60deg);
-  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
-  mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+  background: conic-gradient(from -30deg, rgba(26, 115, 232, 0.65) 0deg 60deg, transparent 60deg);
+  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 82%);
+  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 82%);
+}
+
+/* dark basemap swallows deep blue — brighten the beam at night */
+:root[data-theme='dark'] .me-beam {
+  background: conic-gradient(from -30deg, rgba(110, 168, 255, 0.7) 0deg 60deg, transparent 60deg);
 }
 
 .about {
