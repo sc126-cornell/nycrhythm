@@ -76,6 +76,12 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
     // iOS 13+ gates the compass behind a permission that needs a tap gesture
     const doe = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> }
     if (typeof doe.requestPermission === 'function') {
+      const deferRetry = () => {
+        if (deferToGesture && !retryPending) {
+          retryPending = true
+          window.addEventListener('pointerdown', retryBind, { once: true })
+        }
+      }
       doe
         .requestPermission()
         .then((r) => {
@@ -83,14 +89,13 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
           if (r === 'granted' && watchId !== null) {
             boundEvent = 'deviceorientation'
             window.addEventListener('deviceorientation', onOrient)
+          } else if (r !== 'granted') {
+            // a no-gesture call may RESOLVE 'denied' without ever prompting —
+            // treat it like the reject path and retry on the first touch
+            deferRetry()
           }
         })
-        .catch(() => {
-          if (deferToGesture && !retryPending) {
-            retryPending = true
-            window.addEventListener('pointerdown', retryBind, { once: true })
-          }
-        })
+        .catch(deferRetry)
     } else if (hasAbsoluteOrientation) {
       boundEvent = 'deviceorientationabsolute'
       window.addEventListener('deviceorientationabsolute', onOrient as EventListener)
