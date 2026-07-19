@@ -122,6 +122,36 @@ body {
   backdrop-filter: blur(6px);
 }
 
+/* my-location marker: blue dot + compass beam (JS rotates .me-beam) */
+.me-dot {
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1a73e8;
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.me-beam {
+  position: absolute;
+  left: -30px;
+  top: -30px;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  transition:
+    transform 0.15s ease-out,
+    opacity 0.4s;
+  /* 60° wedge centered on up (north); radial mask fades it with distance */
+  background: conic-gradient(from -30deg, rgba(26, 115, 232, 0.5) 0deg 60deg, transparent 60deg);
+  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+  mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+}
+
 .about {
   position: fixed;
   inset: 0;

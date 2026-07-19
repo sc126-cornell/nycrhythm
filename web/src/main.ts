@@ -11,7 +11,7 @@ import { initLocate } from './ui/locate.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'F1-20260719'
+export const BUILD = 'F2-20260719'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')
@@ -112,9 +112,15 @@ async function boot() {
     board.open(s)
     focusStation(s, 14)
   })
-  initLocate(map, () => {
-    if (follow === 'lock') setFollow('free')
-  })
+  // auto-locate on load (user decision) — unless a shared deep link owns the camera
+  const dlPeek = parseHash()
+  initLocate(
+    map,
+    () => {
+      if (follow === 'lock') setFollow('free')
+    },
+    !dlPeek.c && !dlPeek.s && !dlPeek.f,
+  )
 
   // ---- info card (skeleton once; per-frame text updates — iOS rule) ----
   const infoEl = document.getElementById('traininfo')!
