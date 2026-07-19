@@ -79,7 +79,8 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
       doe
         .requestPermission()
         .then((r) => {
-          if (r === 'granted') {
+          // the dialog can outlive the feature: bind only if locate is still on
+          if (r === 'granted' && watchId !== null) {
             boundEvent = 'deviceorientation'
             window.addEventListener('deviceorientation', onOrient)
           }

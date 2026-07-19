@@ -11,7 +11,7 @@ import { initLocate } from './ui/locate.ts'
 import { parseHash, writeHash } from './ui/deeplink.ts'
 import type { LiveTrip, Network, Pt, StationInfo } from './core/types.ts'
 
-export const BUILD = 'F2-20260719'
+export const BUILD = 'F2b-20260719'
 
 window.addEventListener('error', (e) => {
   const el = document.getElementById('liveCount')

@@ -66,6 +66,14 @@
 用戶再報一站無標籤（42 St-Port Authority，A/C/E，紅圈截圖）：成因與 R1 不同——「每 complex 一枚標籤」的設計對**含多個不同站名的 complex** 失效（35 個 complex 中 17 個如此：Times Sq＋Port Authority、Bleecker＋Broadway-Lafayette、51 St＋Lex/53、WTC 四名組…），遠端成員全裸。修：complex 改「**每個不同站名一枚標籤**」（同名月台仍合併質心）。資料驗證：標籤 444→464＝409 獨立站＋55 組（cx×名）全覆蓋 PASS；Port Authority 標籤座標偏移 0.0 m；五個多名 complex 抽測全 YES。
 教訓：「一個 complex＝一個地點」是台北直覺；NYC 的 complex 是**通道相連的多個地點**，顯示粒度應以「站名」為準而非 complex。
 
+### Post-M45 調整 code review（2026-07-19，用戶指示；範圍 016b73e..caef3ab）
+涵蓋：R1 三修、品牌改名（NYC Rhythm）、R2 complex 標籤、F1 我的位置、F2 光束＋開站自動定位（main.ts / basemap.ts / trains.ts / locate.ts / style.css / index.html）。
+1. **修正**：locate.ts iOS motion 權限競態——對話框彈出期間關掉 📍，granted resolve 後仍會綁 compass listener（功能已關卻留監聽、`boundEvent` 失真）。修：resolve 時查 `watchId` 存活才綁（BUILD F2b）。
+2. **留觀察**：landscape 的羅盤補償符號（`+ screen.orientation.angle`）未實證；直立（angle=0）不受影響，實測方向不對再校。
+3. **已知取捨**：速度濾波 110 門檻下，插值窗被壓縮仍可能短暫顯示 90–110 km/h；根治＝BACKLOG B4（VehiclePositions currentStatus 修飾插值端點）。
+4. **確認無虞**：速度濾波跳過幀後 lastSample 仍推進（不凍結）；dup 標籤抑制每幀重建、順序穩定不閃爍；canvas `tolerance` 不影響非互動 polyline；藍點 marker `interactive:false` 不擋點車；toast 層級高於 About；自動定位連續 watchPosition 耗電與同類產品同級。
+lint／tsc／build 綠；F2b 部署驗證通過。
+
 ## 6. 用戶確認（Gate）
 
 - [x] 已取得用戶「轉 Public」指令並執行＝發佈確認（日期：2026-07-19；實地日回報 7/20 收尾於 Validate ①與 M3 Gate）
