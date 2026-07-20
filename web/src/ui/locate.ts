@@ -28,7 +28,7 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
   let beamEl: HTMLElement | null = null
   let centered = false
   let warned = false
-  let compass = false // a compass source is delivering headings
+  let lastHeadingAt = 0 // ms clock of the latest compass event — 0/old = compass silent
   let shownDeg = 0 // unwrapped rotation so the CSS transition never spins the long way
   let beamOn = false
   let boundEvent: 'deviceorientation' | 'deviceorientationabsolute' | null = null
@@ -63,9 +63,25 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
       h = 360 - e.alpha + (screen.orientation?.angle ?? 0)
     }
     if (h === null) return
-    compass = true
+    lastHeadingAt = Date.now()
     applyHeading(((h % 360) + 360) % 360)
   }
+
+  // self-heal (field report): after the page sits in background, iOS often stops
+  // delivering deviceorientation for good — cycling the listener restarts it.
+  // Any touch, or returning to the foreground, revives a silent (>10s) compass.
+  const compassStale = () => watchId !== null && boundEvent !== null && Date.now() - lastHeadingAt > 10_000
+  function rebindCompass() {
+    if (!boundEvent) return
+    window.removeEventListener(boundEvent, onOrient as EventListener)
+    window.addEventListener(boundEvent, onOrient as EventListener)
+  }
+  window.addEventListener('pointerdown', () => {
+    if (compassStale()) rebindCompass()
+  })
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && compassStale()) rebindCompass()
+  })
 
   const retryBind = () => {
     retryPending = false
@@ -119,7 +135,7 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
     beamEl = null
     centered = false
     warned = false
-    compass = false
+    lastHeadingAt = 0
     beamOn = false
     shownDeg = 0
     btn.classList.remove('active')
@@ -156,8 +172,8 @@ export function initLocate(map: L.Map, onCenter: () => void, auto = false) {
           ring!.setLatLng([lat, lon])
           ring!.setRadius(accuracy)
         }
-        // no compass (denied / unsupported): fall back to GPS course while walking
-        if (!compass && heading !== null && !Number.isNaN(heading) && (speed ?? 0) > 0.5) {
+        // compass silent (denied / unsupported / suspended): GPS course while walking
+        if (Date.now() - lastHeadingAt > 10_000 && heading !== null && !Number.isNaN(heading) && (speed ?? 0) > 0.5) {
           applyHeading(heading)
         }
         if (!centered) {
