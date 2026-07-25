@@ -33,6 +33,7 @@ export class TrainsLayer {
   private readonly canvas: HTMLCanvasElement
   private readonly ctx: CanvasRenderingContext2D
   private hits: Array<{ x: number; y: number; st: TrainState }> = []
+  private hitR = 16
 
   constructor(map: L.Map) {
     this.map = map
@@ -60,6 +61,9 @@ export class TrainsLayer {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, size.x, size.y)
     const zoom = this.map.getZoom()
+    // desktop/tablet viewports get 1.5×: phone-sized bullets vanish on big screens
+    const k = Math.min(size.x, size.y) >= 700 ? 1.5 : 1
+    this.hitR = 16 * k
     this.hits = []
 
     // our own crisp station labels (under trains)
@@ -89,7 +93,7 @@ export class TrainsLayer {
       }
     }
 
-    const r = zoom < 12 ? 4.5 : zoom < 14 ? 7 : 9
+    const r = (zoom < 12 ? 4.5 : zoom < 14 ? 7 : 9) * k
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     for (const it of items) {
@@ -114,7 +118,7 @@ export class TrainsLayer {
 
   hitTest(x: number, y: number): TrainState | null {
     let best: TrainState | null = null
-    let bestD = 16
+    let bestD = this.hitR
     for (const h of this.hits) {
       const d = Math.hypot(h.x - x, h.y - y)
       if (d < bestD) {
