@@ -11,8 +11,14 @@ export interface BaseMap {
   wasStationClick: () => boolean
 }
 
+// CARTO stopped serving keyless raster tiles on 2026-09-25 (they return an "API KEY REQUIRED"
+// watermark instead). The key rides in the bundle on purpose: the Basemap Terms forbid serving
+// tiles through our own proxy or cache (9.c.iii), so the key is guarded by the host allowlist
+// set on it in the CARTO dashboard, not by being kept out of the client.
+const CARTO_KEY = import.meta.env.VITE_CARTO_KEY ?? ''
+
 const tileUrl = (dark: boolean) =>
-  `https://{s}.basemaps.cartocdn.com/${dark ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`
+  `https://basemaps.cartocdn.com/rastertiles/${dark ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`
 
 export function createMap(el: string, net: Network, onStationClick: (s: StationInfo) => void): BaseMap {
   const dark = matchMedia('(prefers-color-scheme: dark)').matches
@@ -23,7 +29,10 @@ export function createMap(el: string, net: Network, onStationClick: (s: StationI
   })
   L.control.zoom({ position: 'bottomright' }).addTo(map)
   const tiles = L.tileLayer(tileUrl(dark), {
-    attribution: '© OpenStreetMap © CARTO · Data: MTA New York City Transit',
+    // both credits must be visible and linked, or CARTO may revoke the key (Basemap Terms 13)
+    attribution:
+      '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      '© <a href="https://carto.com/attributions/">CARTO</a> · Data: MTA New York City Transit',
     maxZoom: 19,
   }).addTo(map)
 
